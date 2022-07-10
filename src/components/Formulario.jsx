@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Error } from "./Error";
 
-export const Formulario = ({ pacientes, setPacientes, paciente }) => {
+export const Formulario = ({
+  pacientes,
+  setPacientes,
+  paciente,
+  setPaciente,
+}) => {
   const [error, setError] = useState(false);
   const [valueInput, setValueInput] = useState({
     nameMascota: "",
@@ -13,6 +18,7 @@ export const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
   const { nameMascota, namePropietario, email, alta, sintomas } = valueInput;
 
+  //Pone en el formulario info a editar
   useEffect(() => {
     if (Object.keys(paciente).length > 0) {
       setValueInput(paciente);
@@ -70,11 +76,12 @@ export const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
     if (paciente.id) {
       //editando registro
-      objetoPaciente.id == paciente.id;
-      const pacientesActualizados = pacientes.map((pacienteState) =>
+      objetoPaciente.id = paciente.id;
+      const pacientesActualizado = pacientes.map((pacienteState) =>
         pacienteState.id === paciente.id ? objetoPaciente : pacienteState
       );
-      setPacientes(pacientesActualizados);
+      setPacientes(pacientesActualizado);
+      setPaciente({});
     } else {
       //nuevo registro
       objetoPaciente.id = generarId();

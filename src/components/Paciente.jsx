@@ -1,7 +1,14 @@
 import React from "react";
 
-export const Paciente = ({ paciente, setPaciente }) => {
-  const { nameMascota, namePropietario, email, alta, sintomas } = paciente;
+export const Paciente = ({ paciente, setPaciente, onDeletePaciente }) => {
+  const { nameMascota, namePropietario, email, alta, sintomas, id } = paciente;
+
+  const handleDelete = () => {
+    const respuesta = confirm("¿Deseas eliminar este paciente?");
+    if (respuesta) {
+      onDeletePaciente(id);
+    }
+  };
 
   return (
     <div
@@ -33,6 +40,7 @@ export const Paciente = ({ paciente, setPaciente }) => {
           Editar
         </button>
         <button
+          onClick={handleDelete}
           type="button"
           className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold rounded"
         >

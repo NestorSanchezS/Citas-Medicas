@@ -1,7 +1,11 @@
 import React from "react";
 import { Paciente } from "./Paciente";
 
-export const ListadoPacientes = ({ pacientes, setPaciente }) => {
+export const ListadoPacientes = ({
+  pacientes,
+  setPaciente,
+  onDeletePaciente,
+}) => {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       {pacientes.length === 0 ? (
@@ -27,6 +31,7 @@ export const ListadoPacientes = ({ pacientes, setPaciente }) => {
               paciente={paciente}
               key={paciente.id}
               setPaciente={setPaciente}
+              onDeletePaciente={onDeletePaciente}
             />
           ))}
         </>
